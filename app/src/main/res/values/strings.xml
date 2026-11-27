@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Bondhu</string>
+    <string name="channel_voice">Bondhu Voice</string>
+    <string name="notif_voice">Bondhu is listening</string>
+    <string name="orb_label">Bondhu</string>
+    <string name="stop">থামো</string>
+</resources>
