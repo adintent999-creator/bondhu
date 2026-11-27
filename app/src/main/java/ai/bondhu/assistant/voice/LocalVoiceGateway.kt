@@ -45,7 +45,8 @@ class LocalVoiceGateway @Inject constructor(
                     (langResult == TextToSpeech.LANG_MISSING_DATA || langResult == TextToSpeech.LANG_NOT_SUPPORTED)
                 ) {
                     val bnVoice = tts?.voices?.firstOrNull {
-                        it.language?.lowercase(Locale.getDefault())?.startsWith("bn") == true
+                        val language = it.locale.language.lowercase(Locale.getDefault())
+                        language.startsWith("bn")
                     }
                     if (bnVoice != null) {
                         langResult = tts?.setVoice(bnVoice)
