@@ -28,7 +28,7 @@ data class ToolResult(
 )
 
 data class ParsedIntent(
-    val request: ToolRequest?,
+    val request: ToolRequest? = null,
     val clarify: String? = null,
     val kill: Boolean = false,
 )
