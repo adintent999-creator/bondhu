@@ -39,8 +39,8 @@ DONE_CRITERIA (P0)
 
 STATUS
 - [x] Contract pinned
-- [ ] P0 scaffold + tool registry
-- [ ] P0 GitHub build
+- [x] P0 scaffold + tool registry
+- [x] P0 GitHub build (run 45977485210 success)
 - [ ] P0 install + live demo
 - [ ] P1 comms
 - [ ] P2 screen/hands
@@ -48,4 +48,4 @@ STATUS
 - [ ] P4 power features
 - [ ] P5 distribution
 
-NOW: Starting P0 scaffold.
+NOW: APK artifact downloading; next install + live demo.

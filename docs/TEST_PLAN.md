@@ -7,6 +7,7 @@
 - Deny-list policy.
 
 ## Manual device DoD
+0. Confirm only one floating overlay exists (`ai.bondhu.assistant`); `com.maxorb` and `zyvo-orb` must be stopped.
 1. Install APK, open onboarding, grant mic/camera/notifications/overlay.
 2. Say: `টর্চ জ্বালাও, তারপর মেসেজ অ্যাপ খোলো`.
 3. Expect: torch on, Messages opens, spoken reply, two `action_log` rows.

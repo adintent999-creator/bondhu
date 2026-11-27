@@ -41,6 +41,13 @@ class MainActivity : ComponentActivity() {
         super.onNewIntent(intent)
         setIntent(intent)
         voiceHandled = false
+        // On a Transsion/Infinix ROM onResume() is not always delivered when a
+        // singleTop activity is already resumed. The floating orb uses this path.
+        if (intent?.getBooleanExtra("start_voice", false) == true) {
+            voiceHandled = true
+            intent.removeExtra("start_voice")
+            vm.startVoiceScoped()
+        }
     }
 
     private fun startServices() {

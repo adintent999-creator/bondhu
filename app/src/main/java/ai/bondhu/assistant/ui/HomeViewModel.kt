@@ -10,6 +10,7 @@ import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
 import android.provider.Settings
+import android.util.Log
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -93,9 +94,11 @@ class HomeViewModel @Inject constructor(
     }
 
     suspend fun startVoice() {
+        Log.d(TAG, "startVoice called busy=${_ui.value.busy}")
         if (_ui.value.busy) return
         _ui.update { it.copy(busy = true) }
         val heard = voice.listenOnce()
+        Log.d(TAG, "startVoice heard='$heard'")
         _ui.update { it.copy(busy = false, lastHeard = heard.orEmpty()) }
         if (!heard.isNullOrBlank()) handle(heard)
     }
@@ -106,8 +109,10 @@ class HomeViewModel @Inject constructor(
     }
 
     private suspend fun handle(text: String) {
+        Log.d(TAG, "handle text='$text'")
         repo.message("user", text)
         val outcome = runner.handle(text)
+        Log.d(TAG, "outcome reply='${outcome.spoken}' actions=${outcome.actionCount}")
         repo.message("bondhu", outcome.spoken)
         repo.reply(outcome.spoken, 0)
         _ui.update {
@@ -130,5 +135,9 @@ class HomeViewModel @Inject constructor(
     override fun onCleared() {
         voice.destroy()
         super.onCleared()
+    }
+
+    private companion object {
+        const val TAG = "BondhuVM"
     }
 }
