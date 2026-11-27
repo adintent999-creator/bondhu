@@ -22,12 +22,13 @@ import ai.bondhu.assistant.ui.MainActivity
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class SystemToolExecutor @Inject constructor(
-    private val context: Context,
+    @ApplicationContext private val context: Context,
     private val repo: BondhuRepository,
 ) {
     suspend fun execute(request: ToolRequest): ToolResult {

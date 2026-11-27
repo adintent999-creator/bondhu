@@ -3,8 +3,9 @@ package ai.bondhu.assistant.domain.parser
 import ai.bondhu.assistant.core.ParsedIntent
 import ai.bondhu.assistant.core.ToolRequest
 import ai.bondhu.assistant.util.normalizeDigits
+import javax.inject.Inject
 
-class LocalParser {
+class LocalParser @Inject constructor() {
     fun parse(input: String): List<ParsedIntent> {
         val text = input.normalizeDigits()
         val lower = text.lowercase()

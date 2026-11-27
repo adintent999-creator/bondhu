@@ -9,6 +9,7 @@ import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
 import android.speech.tts.TextToSpeech
 import androidx.core.content.ContextCompat
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.suspendCancellableCoroutine
 import java.util.Locale
 import javax.inject.Inject
@@ -17,7 +18,7 @@ import kotlin.coroutines.resume
 
 @Singleton
 class LocalVoiceGateway @Inject constructor(
-    private val context: Context,
+    @ApplicationContext private val context: Context,
 ) : BaseVoiceGateway() {
     private var recognizer: SpeechRecognizer? = null
     private var tts: TextToSpeech? = null
